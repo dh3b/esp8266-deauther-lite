@@ -435,6 +435,10 @@
 #endif /* ifndef MIN_DEAUTH_FRAMES */
 
 // ===== ACCESS POINT ===== //
+#ifndef AP_ENABLED
+  #define AP_ENABLED false
+#endif /* ifndef AP_ENABLED */
+
 #ifndef AP_SSID
   #define AP_SSID "pwned"
 #endif /* ifndef AP_SSID */
@@ -453,7 +457,7 @@
 
 // ===== WEB INTERFACE ===== //
 #ifndef WEB_ENABLED
-  #define WEB_ENABLED true
+  #define WEB_ENABLED false
 #endif /* ifndef WEB_ENABLED */
 
 #ifndef WEB_CAPTIVE_PORTAL
@@ -470,11 +474,11 @@
 
 // ===== CLI ===== //
 #ifndef CLI_ENABLED
-  #define CLI_ENABLED true
+  #define CLI_ENABLED false
 #endif /* ifndef CLI_ENABLED */
 
 #ifndef CLI_ECHO
-  #define CLI_ECHO true
+  #define CLI_ECHO false
 #endif /* ifndef CLI_ECHO */
 
 // =============== LED =============== //

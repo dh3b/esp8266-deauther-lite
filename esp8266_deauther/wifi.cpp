@@ -428,7 +428,9 @@ namespace wifi {
             }
         });
 
+#if WEB_ENABLED
         server.begin();
+#endif // WEB_ENABLED
         mode = wifi_mode_t::ap;
 
         prntln(W_STARTED_AP);

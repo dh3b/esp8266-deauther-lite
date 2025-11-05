@@ -135,7 +135,9 @@ void setup() {
     }
 
     // start access point/web interface
+#if AP_ENABLED
     if (settings::getWebSettings().enabled) wifi::startAP();
+#endif
 
     // STARTED
     prntln(SETUP_STARTED);
@@ -157,7 +159,9 @@ void loop() {
     wifi::update();  // manage access point
     attack.update(); // run attacks
     displayUI.update();
+#if CLI_ENABLED
     cli.update();    // read and run serial input
+#endif
     scan.update();   // run scan
     ssids.update();  // run random mode, if enabled
 
