@@ -434,53 +434,6 @@
   #define MIN_DEAUTH_FRAMES 3
 #endif /* ifndef MIN_DEAUTH_FRAMES */
 
-// ===== ACCESS POINT ===== //
-#ifndef AP_ENABLED
-  #define AP_ENABLED false
-#endif /* ifndef AP_ENABLED */
-
-#ifndef AP_SSID
-  #define AP_SSID "pwned"
-#endif /* ifndef AP_SSID */
-
-#ifndef AP_PASSWD
-  #define AP_PASSWD "deauther"
-#endif /* ifndef AP_PASSWD */
-
-#ifndef AP_HIDDEN
-  #define AP_HIDDEN false
-#endif /* ifndef AP_HIDDEN */
-
-#ifndef AP_IP_ADDR
-  #define AP_IP_ADDR { 192, 168, 4, 1 }
-#endif /* ifndef AP_IP_ADDR */
-
-// ===== WEB INTERFACE ===== //
-#ifndef WEB_ENABLED
-  #define WEB_ENABLED false
-#endif /* ifndef WEB_ENABLED */
-
-#ifndef WEB_CAPTIVE_PORTAL
-  #define WEB_CAPTIVE_PORTAL false
-#endif /* ifndef WEB_CAPTIVE_PORTAL */
-
-#ifndef WEB_USE_SPIFFS
-  #define WEB_USE_SPIFFS false
-#endif /* ifndef WEB_USE_SPIFFS */
-
-#ifndef DEFAULT_LANG
-  #define DEFAULT_LANG "en"
-#endif /* ifndef DEFAULT_LANG */
-
-// ===== CLI ===== //
-#ifndef CLI_ENABLED
-  #define CLI_ENABLED false
-#endif /* ifndef CLI_ENABLED */
-
-#ifndef CLI_ECHO
-  #define CLI_ECHO false
-#endif /* ifndef CLI_ECHO */
-
 // =============== LED =============== //
 #if defined(LED_NEOPIXEL_RGB) || defined(LED_NEOPIXEL_GRB)
   #define LED_NEOPIXEL
@@ -600,15 +553,6 @@
   #endif // if BUTTON_UP != 0 && BUTTON_DOWN != 0 && BUTTON_A != 0 && BUTTON_B != 0
 #endif // ifndef RESET_BUTTON
 
-// ===== Web ===== //
-#ifndef WEB_IP_ADDR
-  #define WEB_IP_ADDR (192, 168, 4, 1)
-#endif // ifndef WEB_IP_ADDR
-
-#ifndef WEB_URL
-  #define WEB_URL "deauth.me"
-#endif // ifndef WEB_URL
-
 // ======== CONSTANTS ========== //
 // Do not change these values unless you know what you're doing!
 #define DEAUTHER_VERSION "2.6.1"
@@ -636,22 +580,6 @@
    // ====== SNIFFER ====== //
  #define CH_TIME 200
  #define MIN_DEAUTH_FRAMES 3
-
-   // ===== ACCESS POINT ===== //
- #define AP_SSID "pwned"
- #define AP_PASSWD "deauther"
- #define AP_HIDDEN false
- #define AP_IP_ADDR {192, 168, 4, 1}
-
-   // ===== WEB INTERFACE ===== //
- #define WEB_ENABLED true
- #define WEB_CAPTIVE_PORTAL false
- #define WEB_USE_SPIFFS false
- #define DEFAULT_LANG "en"
-
-   // ===== CLI ===== //
- #define CLI_ENABLED true
- #define CLI_ECHO true
 
    // ===== LED ===== //
  #define USE_LED true
@@ -719,12 +647,6 @@
 
    // ===== Reset ====== //
  #define RESET_BUTTON 5
-
-
-   // ===== Web ===== //
- #define WEB_IP_ADDR (192, 168, 4, 1)
- #define WEB_URL "deauth.me"
-
  */
 
 

@@ -28,7 +28,6 @@ extern "C" {
 #include "SSIDs.h"
 #include "Scan.h"
 #include "Attack.h"
-#include "CLI.h"
 #include "DisplayUI.h"
 #include "A_config.h"
 
@@ -38,10 +37,9 @@ extern "C" {
 Names names;
 SSIDs ssids;
 Accesspoints accesspoints;
-Stations     stations;
-Scan   scan;
+Stations stations;
+Scan scan;
 Attack attack;
-CLI    cli;
 DisplayUI displayUI;
 
 simplebutton::Button* resetButton;
@@ -69,12 +67,6 @@ void setup() {
 
     // Start EEPROM
     EEPROMHelper::begin(EEPROM_SIZE);
-
-#ifdef FORMAT_SPIFFS
-    prnt(SETUP_FORMAT_SPIFFS);
-    LittleFS.format();
-    prntln(SETUP_OK);
-#endif // ifdef FORMAT_SPIFFS
 
 #ifdef FORMAT_EEPROM
     prnt(SETUP_FORMAT_EEPROM);
@@ -120,24 +112,9 @@ void setup() {
     // load everything else
     names.load();
     ssids.load();
-    cli.load();
 
     // create scan.json
     scan.setup();
-
-    // dis/enable serial command interface
-    if (settings::getCLISettings().enabled) {
-        cli.enable();
-    } else {
-        prntln(SETUP_SERIAL_WARNING);
-        Serial.flush();
-        Serial.end();
-    }
-
-    // start access point/web interface
-#if AP_ENABLED
-    if (settings::getWebSettings().enabled) wifi::startAP();
-#endif
 
     // STARTED
     prntln(SETUP_STARTED);
@@ -156,12 +133,8 @@ void loop() {
     currentTime = millis();
 
     led::update();   // update LED color
-    wifi::update();  // manage access point
     attack.update(); // run attacks
-    displayUI.update();
-#if CLI_ENABLED
-    cli.update();    // read and run serial input
-#endif
+    displayUI.update(); // update display
     scan.update();   // run scan
     ssids.update();  // run random mode, if enabled
 

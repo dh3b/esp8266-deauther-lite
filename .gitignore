@@ -8,3 +8,11 @@
 .DS_Store
 
 *.pyc
+
+*.code-workspace
+
+esp8266_deauther/.vscode/
+esp8266_deauther/include/
+esp8266_deauther/lib/
+esp8266_deauther/test/
+esp8266_deauther/.pio/

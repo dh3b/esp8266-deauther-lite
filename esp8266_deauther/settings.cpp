@@ -78,22 +78,6 @@ namespace settings {
         JSON_INT(S_JSON_CHTIME, data.sniffer.channel_time);
         JSON_INT(S_JSON_MIN_DEAUTHS, data.sniffer.min_deauth_frames);
 
-        // Access Point
-        JSON_VALUE(S_JSON_SSID, data.ap.ssid);
-        JSON_VALUE(S_JSON_PASSWORD, data.ap.password);
-        JSON_FLAG(S_JSON_HIDDEN, data.ap.hidden);
-        JSON_DEC(S_JSON_IP, data.ap.ip, 4);
-
-        // Web Interface
-        JSON_FLAG(S_JSON_WEBINTERFACE, data.web.enabled);
-        JSON_FLAG(S_JSON_CAPTIVEPORTAL, data.web.captive_portal);
-        JSON_FLAG(S_JSON_WEB_SPIFFS, data.web.use_spiffs);
-        JSON_VALUE(S_JSON_LANG, data.web.lang);
-
-        // CLI
-        JSON_FLAG(S_JSON_SERIALINTERFACE, data.cli.enabled);
-        JSON_FLAG(S_JSON_SERIAL_ECHO, data.cli.serial_echo);
-
         // LED
         JSON_FLAG(S_JSON_LEDENABLED, data.led.enabled);
 
@@ -160,21 +144,6 @@ namespace settings {
 
         data.sniffer.channel_time      = CH_TIME;
         data.sniffer.min_deauth_frames = MIN_DEAUTH_FRAMES;
-
-        strncpy(data.ap.ssid, AP_SSID, 32);
-        strncpy(data.ap.password, AP_PASSWD, 64);
-        data.ap.hidden = AP_HIDDEN;
-        uint8_t ip[4] = AP_IP_ADDR;
-
-        memcpy(data.ap.ip, ip, 4);
-
-        data.web.enabled        = WEB_ENABLED;
-        data.web.captive_portal = WEB_CAPTIVE_PORTAL;
-        data.web.use_spiffs     = WEB_USE_SPIFFS;
-        memcpy(data.web.lang, DEFAULT_LANG, 3);
-
-        data.cli.enabled     = CLI_ENABLED;
-        data.cli.serial_echo = CLI_ECHO;
 
         data.led.enabled = USE_LED;
 
@@ -248,18 +217,6 @@ namespace settings {
         return data.sniffer;
     }
 
-    const access_point_settings_t& getAccessPointSettings() {
-        return data.ap;
-    }
-
-    const web_settings_t& getWebSettings() {
-        return data.web;
-    }
-
-    const cli_settings_t& getCLISettings() {
-        return data.cli;
-    }
-
     const led_settings_t& getLEDSettings() {
         return data.led;
     }
@@ -294,21 +251,6 @@ namespace settings {
     void setSnifferSettings(const sniffer_settings_t& sniffer) {
         data.sniffer = sniffer;
         changed      = true;
-    }
-
-    void setAccessPointSettings(const access_point_settings_t& ap) {
-        data.ap = ap;
-        changed = true;
-    }
-
-    void setWebSettings(const web_settings_t& web) {
-        data.web = web;
-        changed  = true;
-    }
-
-    void setCLISettings(const cli_settings_t& cli) {
-        data.cli = cli;
-        changed  = true;
     }
 
     void setLEDSettings(const led_settings_t& led) {
